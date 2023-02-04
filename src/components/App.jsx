@@ -78,11 +78,15 @@ class App extends Component {
     return (
       <div className={s.App}>
         <Searchbar onSubmit={handlerSubmit} />
-        {loading && <Loader />}
-        {infoForModal && <Modal info={infoForModal} closeModal={closeModal} />}
-        <ImageGallery images={images} onClick={openModal} />
 
-        {images.length < totalImages && <Button onClick={handlerLoadMore} />}
+        {infoForModal && <Modal info={infoForModal} closeModal={closeModal} />}
+        {images.length >= 1 && (
+          <ImageGallery images={images} onClick={openModal} />
+        )}
+        {loading && <Loader />}
+        {images.length < totalImages && !loading && (
+          <Button onClick={handlerLoadMore} />
+        )}
         {/* {images.length  === totalImages && (
           <p>
             We don't have more images for showing. Please enter the other search

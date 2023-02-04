@@ -5,7 +5,17 @@ import s from './ImageGallery.module.css';
 const ImageGallery = ({ images, onClick }) => {
   return (
     <ul className={s.gallery}>
-      <ImageGalleryItem images={images} onClick={onClick} />
+      {images.map(({ id, webformatURL, largeImageURL, tags }) => {
+        return (
+          <ImageGalleryItem
+            tags={tags}
+            webformatURL={webformatURL}
+            largeImageURL={largeImageURL}
+            onClick={onClick}
+            key={id}
+          />
+        );
+      })}
     </ul>
   );
 };

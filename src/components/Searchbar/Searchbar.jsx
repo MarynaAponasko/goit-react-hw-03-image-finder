@@ -21,7 +21,6 @@ class Searchbar extends Component {
 
     const { search } = this.state;
     this.props.onSubmit({ search });
-    // this.resetSearch();
   };
 
   resetSearch = () => {
